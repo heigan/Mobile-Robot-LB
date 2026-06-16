@@ -5,6 +5,8 @@ import random
 from scipy.interpolate import splprep, splev
 from collections import deque
 
+s_spline = 0.05
+
 # ================= ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ =================
 def _find_valid_start_cell(grid, start, rows, cols, max_radius=3):
     """
@@ -283,7 +285,7 @@ def smooth_path_spline(path, num_points=50):
     
     try:
         # Пробуем построить кубический сплайн (k=3)
-        tck, u = splprep([clean_x, clean_y], s=0.0, k=k)
+        tck, u = splprep([clean_x, clean_y], s = s_spline, k=k)
         u_new = np.linspace(0, 1, num_points)
         x_new, y_new = splev(u_new, tck)
         return list(zip(x_new.tolist(), y_new.tolist()))
@@ -292,7 +294,7 @@ def smooth_path_spline(path, num_points=50):
         # Если кубический сплайн не смог (например, все точки на одной прямой), 
         # пробуем линейную интерполяцию (k=1), которая работает всегда для >= 2 точек
         try:
-            tck, u = splprep([clean_x, clean_y], s=0.0, k=1)
+            tck, u = splprep([clean_x, clean_y], s = s_spline, k=1)
             u_new = np.linspace(0, 1, num_points)
             x_new, y_new = splev(u_new, tck)
             return list(zip(x_new.tolist(), y_new.tolist()))

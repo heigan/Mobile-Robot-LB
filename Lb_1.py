@@ -4,7 +4,7 @@ import math
 import sys
 import os
 
-# 1. ИМПОРТ МОДУЛЬНЫХ ФУНКЦИЙ (добавлена calculate_tracking_metrics)
+# 1. ИМПОРТ МОДУЛЬНЫХ ФУНКЦИЙ
 from vision_func import (
     load_calibration, setup_aruco_detector, detect_obstacles, detect_robot,
     calculate_navigation, draw_overlay, MIN_OBSTACLE_AREA, COLOR_RANGES, draw_reachable_zone

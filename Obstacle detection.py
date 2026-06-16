@@ -3,7 +3,7 @@ import numpy as np
 import yaml
 import os
 
-# ================= НАСТРОЙКИ =================
+# НАСТРОЙКИ 
 CAMERA_INDEX = 1  # 1 - внешняя USB-камера, 0 - встроенная
 CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "parameters.yaml")
 
@@ -15,7 +15,7 @@ RED = (0, 0, 255)
 BLUE = (255, 0, 0)
 GREEN = (0, 255, 0)
 
-# ================= 1. ЗАГРУЗКА КОНФИГА (YAML) =================
+# ЗАГРУЗКА КОНФИГА (YAML) 
 if not os.path.exists(CONFIG_PATH):
     print("Ошибка: файл parameters.yaml не найден.")
     exit()
@@ -45,7 +45,7 @@ color_ranges = {
     "Black": [[(0, 0, 0), (180, 255, 110)]]
 }
 
-# ================= 2. ПОДКЛЮЧЕНИЕ КАМЕРЫ =================
+# ПОДКЛЮЧЕНИЕ КАМЕРЫ 
 cap = cv2.VideoCapture(CAMERA_INDEX)
 cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)  # Убирает накопление кадров и снижает лаги
 if not cap.isOpened():
@@ -91,13 +91,11 @@ while True:
         for r_min, r_max in ranges:
             mask |= cv2.inRange(hsv, np.array(r_min, dtype=np.uint8), np.array(r_max, dtype=np.uint8))
 
-
-        # --- НАЛОЖЕНИЕ МАСКИ ЧЕРНЫХ ПРЕПЯТСТВИЙ НА ВИДЕО ---
+        #  НАЛОЖЕНИЕ МАСКИ ЧЕРНЫХ ПРЕПЯТСТВИЙ НА ВИДЕО 
         if color_name == "Black":
             overlay = frame.copy()
             overlay[mask > 0] = (0, 255, 0)  # Красные пиксели там, где сработала маска
             frame = cv2.addWeighted(overlay, 1, frame, 0.0, 0)
-        # ---------------------------------------------------
 
         kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
         mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel, iterations=2)
