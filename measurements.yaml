@@ -1,0 +1,43 @@
+astar:
+  last_run:
+    timestamp: '2026-06-13 19:36:20'
+    planned_path_length_m: 3.023
+    actual_path_length_m: 3.027
+    forward_time_s: 28.03
+    mse_mm2: 438.01
+    r2_accuracy: 0.9989
+    success: true
+rrt_star:
+  last_run:
+    timestamp: '2026-06-10 15:20:05'
+    forward_path_length_m: 2.147
+    forward_time_s: 18.57
+    reverse_path_length_m: 2.087
+    reverse_time_s: 18.22
+    success: true
+apf:
+  last_run:
+    timestamp: '2026-06-10 15:32:26'
+    forward_path_length_m: 1.945
+    forward_time_s: 19.35
+    reverse_path_length_m: 1.911
+    reverse_time_s: 20.53
+    success: true
+greedy:
+  last_run:
+    timestamp: '2026-06-13 19:40:19'
+    planned_path_length_m: 3.19
+    actual_path_length_m: 3.373
+    forward_time_s: 29.75
+    mse_mm2: 375.65
+    r2_accuracy: 0.9991
+    success: true
+bi_dijkstra:
+  last_run:
+    timestamp: '2026-06-13 19:38:18'
+    planned_path_length_m: 3.044
+    actual_path_length_m: 3.045
+    forward_time_s: 27.74
+    mse_mm2: 406.56
+    r2_accuracy: 0.999
+    success: true
