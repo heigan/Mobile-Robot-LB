@@ -316,7 +316,7 @@ def draw_overlay(frame, calib, obstacles, robot_data, target_px, nav_data, targe
             for i in range(len(path_pixels_orig) - 1):
                 cv2.line(frame, path_pixels_orig[i], path_pixels_orig[i+1], COLORS["Black"], 1)               
 
-"""
+
     # Текст (дистанция и координаты)
     h, w = frame.shape[:2]
     if target_m is not None:
@@ -327,5 +327,5 @@ def draw_overlay(frame, calib, obstacles, robot_data, target_px, nav_data, targe
     if nav_data:
         cv2.putText(frame, f"Dist: {nav_data[0]:.2f}m | Angle: {nav_data[1]:.1f} deg", 
                     (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORS["YELLOW"], 2)
-"""
+
 pass
